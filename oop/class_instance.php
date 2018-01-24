@@ -2,7 +2,10 @@
 class MyFileObject{
    private $name;
     function __construct($fname){
-      $this->name= $fname;
+      if(!file_exists($fname))
+        die('There is no file '.$fname);
+      else
+        $this->name= $fname;
     }
     function isFile(){
       return is_file($this->name);
